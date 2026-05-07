@@ -1,0 +1,48 @@
+/*Diseño para el encabezado*/
+.header{
+    width: 100%;
+    height: 120px;
+    grid-area: header;
+    background-color: #000000;
+    color: white;
+    display: flex;
+    top: 14px;
+    position: relative;
+}
+
+/*Diseño para el título del encabezado*/
+.header h1{
+  font-family: "Microgramma", sans-serif;
+  letter-spacing: 2px;
+  background: black;
+  color: white;
+  padding: 12px;
+}
+
+/*Diseño para la barra verde debajo del título*/
+.barra-verde{
+    width: 100%;
+    height: 20px;
+    background-color: #00FF00;
+    position: absolute;
+    bottom: 0;
+}
+
+/*Diseño para el icono de carrito de compras*/
+.icono{
+    width: 50px;
+    height: 40px;
+    position: absolute;
+    right: 6%;
+    top: 38px;
+    margin-right: 20px;
+}
+
+/*Diseño para el icono de usuario*/
+.icono2{
+    width: 50px;
+    height: 40px;
+    position: absolute;
+    right: 2%;
+    top: 38px;
+}
