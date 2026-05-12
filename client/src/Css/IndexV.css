@@ -1,48 +1,392 @@
-/*Diseño para el encabezado*/
-.header{
-    width: 100%;
-    height: 120px;
-    grid-area: header;
-    background-color: #000000;
-    color: white;
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+}
+
+/* PAGINA */
+.pagina{
+    min-height: 100vh;
     display: flex;
-    top: 14px;
+    flex-direction: column;
+}
+
+/* HEADER */
+.header{
+    background: black;
+    color: white;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
     position: relative;
 }
 
-/*Diseño para el título del encabezado*/
-.header h1{
-  font-family: "Microgramma", sans-serif;
-  letter-spacing: 2px;
-  background: black;
-  color: white;
-  padding: 12px;
+.logo h1{
+    letter-spacing: 2px;
 }
 
-/*Diseño para la barra verde debajo del título*/
 .barra-verde{
-    width: 100%;
-    height: 20px;
-    background-color: #00FF00;
     position: absolute;
     bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: #00ff00;
 }
 
-/*Diseño para el icono de carrito de compras*/
+/* ICONOS */
+.header-icons{
+    display: flex;
+    gap: 20px;
+}
+
 .icono{
-    width: 50px;
+    width: 40px;
     height: 40px;
-    position: absolute;
-    right: 6%;
-    top: 38px;
-    margin-right: 20px;
+    transition: 0.3s;
 }
 
-/*Diseño para el icono de usuario*/
-.icono2{
-    width: 50px;
-    height: 40px;
+.icono:hover{
+    transform: scale(1.1);
+}
+
+/* MAIN */
+.main{
+    flex: 1;
+    padding: 30px;
+}
+
+/* MENU */
+.menu{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.item{
+    text-align: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.item:hover{
+    transform: translateY(-8px);
+}
+
+.main-image{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.item h2{
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+
+
+/* ========================= */
+/* CARRUSEL MODERNO 2026 */
+/* ========================= */
+
+.carrusel{
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-top: 50px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.slide{
     position: absolute;
-    right: 2%;
-    top: 38px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: fade 15s infinite;
+}
+
+.slide:nth-child(1){
+    animation-delay: 0s;
+}
+
+.slide:nth-child(2){
+    animation-delay: 5s;
+}
+
+.slide:nth-child(3){
+    animation-delay: 10s;
+}
+
+.slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+}
+
+/* TEXTO ENCIMA */
+.overlay{
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+    color: white;
+    max-width: 500px;
+}
+
+.overlay h2{
+    font-size: 55px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.overlay p{
+    font-size: 20px;
+    margin-bottom: 25px;
+    color: #ddd;
+}
+
+/* BOTON */
+.overlay button{
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    background: #00ff00;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.overlay button:hover{
+    transform: scale(1.08);
+    background: white;
+}
+
+/* ANIMACION */
+@keyframes fade{
+    0%{
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+    30%{
+        opacity: 1;
+    }
+    35%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px){
+    .carrusel{
+        height: 350px;
+    }
+    .overlay h2{
+        font-size: 35px;
+    }
+    .overlay p{
+        font-size: 16px;
+    }
+}
+
+/*Diseño para el modal de registro*/
+.modal {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Diseño para el contenido del modal*/
+.modal-content {
+    width:380px;
+    padding:40px;
+    margin: -5% auto;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.6);
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.15);
+    display: flex;
+}
+
+
+.close {
+    align-self: flex-end;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.close:hover {
+    color: #ff4d4d;
+    transform: scale(1.2);
+}
+
+/*Diseño para el formulario dentro del modal*/
+.form-container h2{
+    color: white;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+/*Diseño para los campos del formulario*/
+.form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+
+/*Diseño para las etiquetas y los campos de entrada del formulario*/
+.form-group label {
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(37, 182, 49, 0.8);
+}
+
+.form-group button {
+    width: 108%;
+    padding: 12px;
+    background: linear-gradient(45deg, #4CAF50, #2ecc71);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.form-group button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #45a049, #27ae60);
+}
+
+/*Fin del modal registro*/
+
+
+
+
+
+/* CATALOGO */
+.catalogo{
+    margin-top: 50px;
+}
+
+.titulo-catalogo{
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+/* PRODUCTOS */
+.productos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 25px;
+}
+
+.card{
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-10px);
+}
+
+.card img{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.card h3{
+    margin: 15px 0 10px;
+}
+
+.card span{
+    color: green;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.card button{
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: black;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card button:hover{
+    background: #00ff00;
+    color: black;
+}
+
+/* FOOTER */
+.footer{
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+.barra-verdeF{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: #00ff00;
 }
