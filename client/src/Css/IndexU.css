@@ -1,0 +1,94 @@
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+}
+
+/* PAGINA */
+.pagina{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+.header{
+    background: black;
+    color: white;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: relative;
+}
+
+.logo h1{
+    letter-spacing: 2px;
+}
+
+.barra-verde{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: #00ff00;
+}
+
+/* ICONOS */
+.header-icons{
+    display: flex;
+    gap: 20px;
+}
+
+.icono{
+    width: 40px;
+    height: 40px;
+    transition: 0.3s;
+}
+
+.icono:hover{
+    transform: scale(1.1);
+}
+
+/* MAIN */
+.main{
+    flex: 1;
+    padding: 30px;
+}
+
+/* MENU */
+.menu{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.item{
+    text-align: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.item:hover{
+    transform: translateY(-8px);
+}
+
+.main-image{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.item h2{
+    margin-top: 10px;
+    font-size: 18px;
+}

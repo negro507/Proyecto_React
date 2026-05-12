@@ -1,9 +1,9 @@
 import React from 'react';
 import './Css/IndexV.css';
-import {useState} from 'react';
+import { useState } from 'react';
 import Axios from 'axios';
 
-function IndexV() {
+function IndexV({ setSesion, setNombreUsuario }) {
 
   const [modalRegistro, setModalRegistro] = useState(false);
   const [modalLogin, setModalLogin] = useState(false);
@@ -12,39 +12,44 @@ function IndexV() {
   const [correo, setCorreo] = useState('');
   const [password, setPassword] = useState('');
 
+
+  // REGISTRO
   const add = () => {
-    Axios.post('http://localhost:3001/api/register',{
+    Axios.post('http://localhost:3001/api/register', {
       nombre: nombre,
       correo: correo,
       password: password
-    }).then((response) => {
+    })
+    .then(() => {
       alert('Usuario registrado con éxito');
       setModalRegistro(false);
     })
-    .catch((error) => {
+    .catch(() => {
       alert('Error al registrar usuario');
-    })
-  }
+    });
+  };
 
 
- const login = () => {
+  // LOGIN
+  const login = () => {
     Axios.post('http://localhost:3001/api/login', {
-        correo: correo,
-        password: password
+      correo: correo,
+      password: password
     })
     .then((response) => {
-        if(response.data.message){
-            alert(response.data.message);
-        }else{
-            alert('Login exitoso');
-            setModalLogin(false);
-        }
+      if(response.data.message){
+        alert(response.data.message);
+      } else {
+        alert('Login exitoso');
+        setNombreUsuario(response.data.nombre);
+        setModalLogin(false);
+        setSesion(true);
+      }
     });
-}
+  };
 
   return (
     <div className="pagina">
-
       {/* HEADER */}
       <header className="header">
 
@@ -61,15 +66,14 @@ function IndexV() {
             <img src="/Img/usuario.png" alt="usuario" className="icono" />
           </a>
         </div>
-
         <span className="barra-verde"></span>
-
       </header>
 
-
+      
       {/* MENU */}
       <main className="main">
         <section className="menu">
+
           <div className="item">
             <img src="/Img/llantas.jpeg" alt="llantas" className="main-image" />
             <h2>LLANTAS</h2>
@@ -94,86 +98,96 @@ function IndexV() {
             <img src="/Img/tutoriales.png" alt="tutoriales" className="main-image" />
             <h2>TUTORIALES</h2>
           </div>
+
         </section>
-        {/*Fin del menu*/}
+        {/* FIN MENU */}
 
 
-        {/*Modal de registro*/}
+        {/* MODAL REGISTRO */}
         {modalRegistro && (
-        <div className="modal">
+          <div className="modal">
             <div className="modal-content">
-                <span className="close"onClick={() => setModalRegistro(false)}>&times;</span>
-                <div className="form-container">
-                    <h2>Registrarse</h2>
-                    <form>
-                        <div className="form-group">
-                            <label>Nombre</label>
-                            <input onChange={(e) => setNombre(e.target.value)} type="text"placeholder="Ingresa tu nombre"/>
-                        </div>
-                        <div className="form-group">
-                            <label>Correo electrónico</label>
-                            <input onChange={(e) => setCorreo(e.target.value)} type="email"placeholder="Ingresa tu correo"/>
-                        </div>
-                        <div className="form-group">
-                            <label>Contraseña</label>
-                            <input onChange={(e) => setPassword(e.target.value)} type="password"placeholder="Ingresa tu contraseña"/>
-                        </div>
-                        <div className="form-group">
-                            <button  type="button" onClick={add}>
-                                Registrarse
-                            </button>
-                            <p className="cambiar-modal" 
-                              onClick={()=>{setModalRegistro(false)
-                              setModalLogin(true)
-                            }}>
-                                ¿Ya tienes una cuenta? Inicia sesión
-                            </p>
-                        </div>
-                    </form>
-                </div>
+              <span
+                className="close"
+                onClick={() => setModalRegistro(false)}>
+                &times;
+              </span>
+              <div className="form-container">
+                <h2>Registrarse</h2>
+                <form>
+                  
+                  <div className="form-group">
+                    <label>Nombre</label>
+                    <input type="text" placeholder="Ingresa tu nombre"onChange={(e) => setNombre(e.target.value)}/>
+                  </div>
+
+                  <div className="form-group">
+                    <label>Correo electrónico</label>
+                    <input type="email"placeholder="Ingresa tu correo"onChange={(e) => setCorreo(e.target.value)}/>
+                  </div>
+
+                  <div className="form-group">
+                    <label>Contraseña</label>
+                    <input type="password"placeholder="Ingresa tu contraseña"onChange={(e) => setPassword(e.target.value)}/>
+                  </div>
+
+                  <div className="form-group">
+                    <button type="button" onClick={add}>
+                      Registrarse
+                    </button>
+                  </div>
+
+                  <p className="cambiar-modal"onClick={() => {
+                      setModalRegistro(false);setModalLogin(true);}}>
+                    ¿Ya tienes una cuenta? Inicia sesión
+                  </p>
+                </form>
+              </div>
             </div>
-        </div>
+          </div>
+
         )}
-        {/*Fin del modal de registro*/}
+        {/* FIN MODAL REGISTRO */}
 
 
-        {/*Modal de login*/}
+        {/* MODAL LOGIN */}
         {modalLogin && (
           <div className="modal">
-              <div className="modal-content">
-                  <span className="close"onClick={() => setModalLogin(false)}>&times;</span>
-                  <div className="form-container">
-                      <h2>Iniciar Sesión</h2>
-                      <form>
-                          <div className="form-group">
-                              <label>Correo electrónico</label>
-                              <input onChange={(e) => setCorreo(e.target.value)} type="email"placeholder="Ingresa tu correo"/>
-                          </div>
-                          <div className="form-group">
-                              <label>Contraseña</label>
-                              <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Ingresa tu contraseña"/>
-                          </div>
-                          <div className="form-group">
-                              <button type="button" onClick={login}>
-                                  Ingresar
-                              </button>
-                          </div>
-                      </form>
-                      <p
-                          className="cambiar-modal"
-                          onClick={() => {
-                              setModalLogin(false);
-                              setModalRegistro(true);
-                          }}>
-                          ¿No tienes cuenta? Regístrate aquí
-                      </p>
+            <div className="modal-content">
+              <span className="close"onClick={() => setModalLogin(false)}>
+                &times;
+              </span>
+              <div className="form-container">
+                <h2>Iniciar Sesión</h2>
+                <form>
+                  <div className="form-group">
+                    <label>Correo electrónico</label>
+                    <input type="email"placeholder="Ingresa tu correo"onChange={(e) => setCorreo(e.target.value)}/>
                   </div>
+                  <div className="form-group">
+                    <label>Contraseña</label>
+                    <input
+                      type="password"
+                      placeholder="Ingresa tu contraseña"onChange={(e) => setPassword(e.target.value)}/>
+
+                  </div>
+                  <div className="form-group">
+                    <button type="button" onClick={login}>
+                      Ingresar
+                    </button>
+                  </div>
+                </form>
+
+                <p
+                  className="cambiar-modal"
+                  onClick={() => {setModalLogin(false);setModalRegistro(true);}}>
+                  ¿No tienes cuenta? Regístrate aquí
+                </p>
               </div>
+            </div>
           </div>
-          )}
-        {/*Fin de la modal de login*/}
-
-
+        )}
+        {/* FIN MODAL LOGIN */}
 
 
         {/* CARRUSEL */}
@@ -182,32 +196,40 @@ function IndexV() {
             <img src="/Img/llantas.jpeg" alt="slide1" />
             <div className="overlay">
               <h2>LAS MEJORES LLANTAS 2026</h2>
-              <p>Potencia, velocidad y calidad premium para tu moto.</p>
+              <p>
+                Potencia, velocidad y calidad premium para tu moto.
+              </p>
               <button>Ver Productos</button>
             </div>
           </div>
+
 
           <div className="slide">
             <img src="/Img/repuestos.jpeg" alt="slide2" />
             <div className="overlay">
               <h2>REPUESTOS ORIGINALES</h2>
-              <p>Todo lo que tu moto necesita en un solo lugar.</p>
+              <p>
+                Todo lo que tu moto necesita en un solo lugar.
+              </p>
               <button>Comprar</button>
             </div>
           </div>
+
 
           <div className="slide">
             <img src="/Img/baterias.jpeg" alt="slide3" />
             <div className="overlay">
               <h2>BATERÍAS DE ALTO RENDIMIENTO</h2>
-              <p>Más duración y máxima potencia.</p>
+              <p>
+                Más duración y máxima potencia.
+              </p>
               <button>Explorar</button>
             </div>
           </div>
         </section>
 
 
-        {/* CATALOGO */}
+        {/* CATÁLOGO */}
         <section className="catalogo">
 
           <h2 className="titulo-catalogo">
@@ -223,12 +245,14 @@ function IndexV() {
               <button>Comprar</button>
             </div>
 
+
             <div className="card">
               <img src="/Img/repuestos.jpeg" alt="" />
               <h3>Kit Repuestos</h3>
               <span>$120.000</span>
               <button>Comprar</button>
             </div>
+
 
             <div className="card">
               <img src="/Img/baterias.jpeg" alt="" />
@@ -243,25 +267,17 @@ function IndexV() {
               <span>$80.000</span>
               <button>Comprar</button>
             </div>
-
           </div>
-
         </section>
-
       </main>
-
 
       {/* FOOTER */}
       <footer className="footer">
-
         <span className="barra-verdeF"></span>
-
         <p>
           © 2026 MOTOPLANET - Todos los derechos reservados
         </p>
-
       </footer>
-
     </div>
   );
 }
