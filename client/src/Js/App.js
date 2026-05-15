@@ -3,6 +3,12 @@ import '../Css/App.css';
 import IndexV from '../IndexV';
 import IndexU from '../Pages/Client/IndexU';
 import CatalogoLLantas from '../Pages/Client/CatalogoLLantas';
+import CarritoC from '../Pages/Client/CarritoC';
+import CatalogoR from '../Pages/Client/CatalogoR';
+import Tutoriales from '../Pages/Client/Tutoriales';
+import CatalogoL from '../Pages/Client/CatalogoL';
+import CatalogoB from '../Pages/Client/CatalogoB';
+
 import {
   Routes,
   Route
@@ -39,6 +45,12 @@ function App() {
 
       {/* PAGINA CATALOGO */}
       <Route path="/catalogo-llantas" element={<CatalogoLLantas />}/>
+      <Route path='/IndexU' element={<IndexU/>}/>
+      <Route path="/CarritoC" element={<CarritoC/>}/>
+      <Route path="/CatalogoR" element={<CatalogoR/>}/>
+      <Route path="/Tutoriales" element={<Tutoriales/>}/>
+      <Route path="/CatalogoL" element={<CatalogoL/>}/>
+      <Route path="/CatalogoB" element={<CatalogoB/>}/>
     </Routes>
   );
 }

@@ -1,67 +1,32 @@
 import React from 'react';
-
 import '../../Css/IndexU.css';
-
 import { Link } from 'react-router-dom';
 
 
 function IndexU({ nombreUsuario }) {
 
   return (
-
     <div className="pagina">
 
       {/* HEADER */}
       <header className="header">
-
         <div className="logo">
-
           <h1>MOTOPLANET</h1>
-
         </div>
 
-
-        <div className="header-icons">
-
-          <a href="/">
-
-            <img
-              src="/Img/carrito.png"
-              alt="carrito"
-              className="icono"
-            />
-
-          </a>
-
-        </div>
-
+        <Link to="/CarritoC" className="header-icons">
+            <img src="/Img/carrito.png"alt="carrito"className="icono"/>
+        </Link>
         <span className="barra-verde"></span>
-
       </header>
-
-
-
-      {/* BIENVENIDA */}
-      <div className="bienvenida">
-
-        <h2>
-          Bienvenido {nombreUsuario}
-        </h2>
-
-      </div>
-
-
 
       {/* MENU */}
       <main className="main">
 
         <section className="menu">
-
           {/* LLANTAS */}
           <div className="item">
-
             <Link to="/catalogo-llantas">
-
               <img
                 src="/Img/llantas.jpeg"
                 alt="llantas"
@@ -69,65 +34,60 @@ function IndexU({ nombreUsuario }) {
               />
 
             </Link>
-
             <h2>LLANTAS</h2>
-
           </div>
 
 
           {/* REPUESTOS */}
           <div className="item">
-
-            <img
-              src="/Img/repuestos.jpeg"
-              alt="repuestos"
-              className="main-image"
-            />
-
+            <Link to="/CatalogoR">
+              <img
+                src="/Img/repuestos.jpeg"
+                alt="repuestos"
+                className="main-image"
+              />
+            </Link>
             <h2>REPUESTOS</h2>
-
           </div>
+          
 
 
           {/* BATERIAS */}
           <div className="item">
-
+            <Link to="/CatalogoR">
             <img
               src="/Img/baterias.jpeg"
               alt="baterias"
               className="main-image"
             />
-
+            </Link>
             <h2>BATERÍAS</h2>
-
           </div>
 
 
           {/* LIMPIEZA */}
           <div className="item">
-
+          <Link to="/CatalogoR">
             <img
               src="/Img/limpieza.jpeg"
               alt="limpieza"
               className="main-image"
             />
-
+            </Link>
             <h2>LIMPIEZA</h2>
-
           </div>
 
 
           {/* TUTORIALES */}
           <div className="item">
-
-            <img
-              src="/Img/tutoriales.png"
-              alt="tutoriales"
-              className="main-image"
-            />
-
+            <Link to="/CatalogoR">
+              <img
+                src="/Img/tutoriales.png"
+                alt="tutoriales"
+                className="main-image"
+              />
+            </Link>
             <h2>TUTORIALES</h2>
-
           </div>
 
         </section>
@@ -139,30 +99,21 @@ function IndexU({ nombreUsuario }) {
         <section className="carrusel">
 
           <div className="slide active">
-
             <img src="/Img/llantas.jpeg" alt="slide1" />
-
             <div className="overlay">
-
               <h2>LAS MEJORES LLANTAS 2026</h2>
-
               <p>
                 Potencia, velocidad y calidad premium para tu moto.
               </p>
-
               <button>
                 Ver Productos
               </button>
-
             </div>
-
           </div>
-
 
           <div className="slide">
 
             <img src="/Img/repuestos.jpeg" alt="slide2" />
-
             <div className="overlay">
 
               <h2>REPUESTOS ORIGINALES</h2>

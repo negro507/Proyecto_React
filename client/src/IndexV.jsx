@@ -2,7 +2,11 @@ import React from 'react';
 import './Css/IndexV.css';
 import { useState } from 'react';
 import Axios from 'axios';
+
+
 function IndexV({ setSesion, setNombreUsuario }) {
+
+  
   const [modalRegistro, setModalRegistro] = useState(false);
   const [modalLogin, setModalLogin] = useState(false);
   const [nombre, setNombre] = useState('');
