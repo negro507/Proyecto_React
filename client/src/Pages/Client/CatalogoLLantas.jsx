@@ -10,7 +10,7 @@ function CatalogoLLantas() {
       {/* HEADER */}
       <header className="header">
         <div className="logo">
-          <Link to="/IndexU">
+          <Link to="/">
             <h1>MOTOPLANET</h1>
           </Link>
         </div>

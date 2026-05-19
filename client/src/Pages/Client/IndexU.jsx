@@ -3,7 +3,9 @@ import '../../Css/IndexU.css';
 import { Link } from 'react-router-dom';
 
 
-function IndexU({ nombreUsuario }) {
+
+
+function IndexU({ nombreUsuario, setSesion }) {
 
   return (
     <div className="pagina">
@@ -17,6 +19,21 @@ function IndexU({ nombreUsuario }) {
         <Link to="/CarritoC" className="header-icons">
             <img src="/Img/carrito.png"alt="carrito"className="icono"/>
         </Link>
+
+
+        <div className="cerrar-sesion">
+
+          <button
+            onClick={() => {
+              localStorage.setItem('sesion', 'false');
+              localStorage.removeItem('nombreUsuario');
+              setSesion(false);
+            }}>
+            Cerrar Sesión
+          </button>
+        </div>
+
+
         <span className="barra-verde"></span>
       </header>
 
@@ -54,7 +71,7 @@ function IndexU({ nombreUsuario }) {
 
           {/* BATERIAS */}
           <div className="item">
-            <Link to="/CatalogoR">
+            <Link to="/CatalogoB">
             <img
               src="/Img/baterias.jpeg"
               alt="baterias"
@@ -67,7 +84,7 @@ function IndexU({ nombreUsuario }) {
 
           {/* LIMPIEZA */}
           <div className="item">
-          <Link to="/CatalogoR">
+          <Link to="/CatalogoL">
             <img
               src="/Img/limpieza.jpeg"
               alt="limpieza"
@@ -80,7 +97,7 @@ function IndexU({ nombreUsuario }) {
 
           {/* TUTORIALES */}
           <div className="item">
-            <Link to="/CatalogoR">
+            <Link to="/Tutoriales">
               <img
                 src="/Img/tutoriales.png"
                 alt="tutoriales"

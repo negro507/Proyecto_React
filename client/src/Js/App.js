@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import '../Css/App.css';
+
 import IndexV from '../IndexV';
 import IndexU from '../Pages/Client/IndexU';
+
 import CatalogoLLantas from '../Pages/Client/CatalogoLLantas';
 import CarritoC from '../Pages/Client/CarritoC';
 import CatalogoR from '../Pages/Client/CatalogoR';
@@ -16,42 +18,114 @@ import {
 
 
 function App() {
+
   const [sesion, setSesion] = useState(false);
+
   const [nombreUsuario, setNombreUsuario] = useState('');
+
 
   // MANTENER SESION
   useEffect(() => {
+
     const sesionGuardada = localStorage.getItem('sesion');
+
     const nombreGuardado = localStorage.getItem('nombreUsuario');
 
+
     if(sesionGuardada === 'true'){
+
       setSesion(true);
+
       setNombreUsuario(nombreGuardado);
+
     }
+
   }, []);
 
 
-  return (
-    <Routes>
-      {/* PAGINA PRINCIPAL */}
-      <Route path="/" element={sesion ? (
-            <IndexU
-              nombreUsuario={nombreUsuario}
-              setSesion={setSesion}/>
-             ) : (
-            <IndexV setSesion={setSesion} setNombreUsuario={setNombreUsuario}/>
-          )
-        }/>
 
-      {/* PAGINA CATALOGO */}
-      <Route path="/catalogo-llantas" element={<CatalogoLLantas />}/>
-      <Route path='/IndexU' element={<IndexU/>}/>
-      <Route path="/CarritoC" element={<CarritoC/>}/>
-      <Route path="/CatalogoR" element={<CatalogoR/>}/>
-      <Route path="/Tutoriales" element={<Tutoriales/>}/>
-      <Route path="/CatalogoL" element={<CatalogoL/>}/>
-      <Route path="/CatalogoB" element={<CatalogoB/>}/>
+  return (
+
+    <Routes>
+
+      {/* PAGINA PRINCIPAL */}
+      <Route
+
+        path="/"
+
+        element={
+
+          sesion ? (
+
+            <IndexU
+
+              nombreUsuario={nombreUsuario}
+
+              setSesion={setSesion}
+
+            />
+
+          ) : (
+
+            <IndexV
+
+              setSesion={setSesion}
+
+              setNombreUsuario={setNombreUsuario}
+
+            />
+
+          )
+
+        }
+
+      />
+
+
+      {/* PAGINA LLANTAS */}
+      <Route
+        path="/catalogo-llantas"
+        element={<CatalogoLLantas />}
+      />
+
+
+      {/* PAGINA CARRITO */}
+      <Route
+        path="/CarritoC"
+        element={<CarritoC />}
+      />
+
+
+      {/* PAGINA REPUESTOS */}
+      <Route
+        path="/CatalogoR"
+        element={<CatalogoR />}
+      />
+
+
+      {/* PAGINA TUTORIALES */}
+      <Route
+        path="/Tutoriales"
+        element={<Tutoriales />}
+      />
+
+
+      {/* PAGINA LIMPIEZA */}
+      <Route
+        path="/CatalogoL"
+        element={<CatalogoL />}
+      />
+
+
+      {/* PAGINA BATERIAS */}
+      <Route
+        path="/CatalogoB"
+        element={<CatalogoB />}
+      />
+
     </Routes>
+
   );
 }
+
 export default App;

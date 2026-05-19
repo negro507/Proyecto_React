@@ -292,3 +292,20 @@ body{
     height: 6px;
     background: #00ff00;
 }
+
+/*Diseño boton cerrar sesion*/
+
+.cerrar-sesion{
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 30px;
+}
+
+.cerrar-sesion button{
+  background: rgb(0, 255, 0);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}

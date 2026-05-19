@@ -15,6 +15,12 @@ function IndexV({ setSesion, setNombreUsuario }) {
 
   // REGISTRO
   const add = () => {
+
+    if (!nombre || !correo || !password) {
+      alert('Por favor, completa todos los campos');
+      return;
+    }
+
     Axios.post('http://localhost:3001/api/register', {
       nombre: nombre,
       correo: correo,
@@ -44,10 +50,7 @@ function IndexV({ setSesion, setNombreUsuario }) {
         setSesion(true);
         setNombreUsuario(response.data.nombre);
         localStorage.setItem('sesion', 'true');
-        localStorage.setItem(
-          'nombreUsuario',
-          response.data.nombre
-        );
+        localStorage.setItem('nombreUsuario',response.data.nombre);
         setModalLogin(false);
       }
     });
