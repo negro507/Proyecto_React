@@ -23,7 +23,12 @@ function App() {
   const [nombreUsuario, setNombreUsuario] = useState('');
 
   // CARRITO
-  const [carrito, setCarrito] = useState([]);
+  const [carrito, setCarrito] = useState(() => {
+  const carritoGuardado = localStorage.getItem('carrito');
+  return carritoGuardado
+    ? JSON.parse(carritoGuardado)
+    : [];
+});
 
 
   // MANTENER SESION
@@ -38,6 +43,17 @@ function App() {
       setNombreUsuario(nombreGuardado);
     }
   }, []);
+
+  // GUARDAR CARRITO EN LOCALSTORAGE
+  // GUARDAR CARRITO
+useEffect(() => {
+
+  localStorage.setItem(
+    'carrito',
+    JSON.stringify(carrito)
+  );
+
+}, [carrito]);
   
 const agregarCarrito = (nuevoProducto) => {
 

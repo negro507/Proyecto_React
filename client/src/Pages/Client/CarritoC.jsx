@@ -134,8 +134,15 @@ function CarritoC({ carrito, setCarrito }) {
         {
           carrito.length > 0 && (
             <button className="vaciar-carrito"onClick={vaciarCarrito}>Vaciar carrito</button>
+            
+
           )
         }
+
+        <button className="comprar-carrito">Finalizar compra</button>
+
+
+        
       </main>
 
       {/* FOOTER */}
