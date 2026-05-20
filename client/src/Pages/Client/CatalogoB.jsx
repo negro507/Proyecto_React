@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import '../../Css/CatalogoB.css';   
 
-export default function CatalogoB() {
+export default function CatalogoB({carrito, agregarCarrito}) {
   return (
     <div className="pagina">
     
@@ -28,62 +28,118 @@ export default function CatalogoB() {
     
               <div className="productos">
                 <div className="card">
-                  <img src="/Img/Llanta-michelin.webp" alt="" />
-                  <h3>Llanta Michelin</h3>
-                  <span>$350.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/bateria1.webp" alt="" />
+                  <h3>Batería Motobatt MBTX9U</h3>
+                  <span>$310.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 1,
+                    nombre: 'Batería Motobatt MBTX9U',
+                    precio: 310000,
+                    imagen: '/Img/bateria1.webp'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
     
                 <div className="card">
-                  <img src="/Img/llanta-pirelli.jpeg" alt="" />
-                  <h3>Llanta Pirelli</h3>
-                  <span>$420.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/bateria2.webp" alt="" />
+                  <h3>Batería Motobatt MBTX12U</h3>
+                  <span>$430.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 2,
+                    nombre: 'Batería Motobatt MBTX12U',
+                    precio: 430000,
+                    imagen: '/Img/bateria2.webp'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
                 <div className="card">
-                  <img src="/Img/llanta-metzeler.jpeg" alt="" />
-                  <h3>Llanta Metzeler</h3>
-                  <span>$390.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/bateria3.webp" alt="" />
+                  <h3>Batería para moto Yuasa YT9A (YTX9BS)</h3>
+                  <span>$210.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 3,
+                    nombre: 'Batería para moto Yuasa YT9A (YTX9BS)',
+                    precio: 210000,
+                    imagen: '/Img/bateria3.webp'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
                 <div className="card">
-                  <img src="/Img/llanta-bridgestone.jpeg" alt="" />
-                  <h3>Llanta bridgestone</h3>
-                  <span>$390.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/bateria4.webp" alt="" />
+                  <h3>Batería para moto Yuasa YTX12BS</h3>
+                  <span>$370.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 4,
+                    nombre: 'Batería para moto Yuasa YTX12BS',
+                    precio: 370000,
+                    imagen: '/Img/bateria4.webp'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
                 <div className="card">
-                  <img src="/Img/llanta-continental.jpeg" alt="" />
-                  <h3>Llanta Continental</h3>
-                  <span>$390.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/bateria5.webp" alt="" />
+                  <h3>Batería para moto Yuasa YTZ14S (Japón)</h3>
+                  <span>$545.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 5,
+                    nombre: 'Batería para moto Yuasa YTZ14S (Japón)',
+                    precio: 545000,
+                    imagen: '/Img/bateria5.webp'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
     
                 <div className="card">
-                  <img src="/Img/llanta-dulop.jpeg" alt="" />
-                  <h3>Llanta Dulop</h3>
-                  <span>$390.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/bateria6.webp" alt="" />
+                  <h3>Batería para Moto BS BTX20HL (YTX20HL-BS)</h3>
+                  <span>$330.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 6,
+                    nombre: 'Batería para Moto BS BTX20HL (YTX20HL-BS)',
+                    precio: 330000,
+                    imagen: '/Img/bateria6.webp'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
     
                 <div className="card">
-                  <img src="/Img/llanta-heiden.jpeg" alt="" />
-                  <h3>Llanta Heiden</h3>
-                  <span>$390.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/bateria7.webp" alt="" />
+                  <h3>Batería para Moto BS BTZ14S (YTZ14S)</h3>
+                  <span>$260.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 7,
+                    nombre: 'Batería para Moto BS BTZ14S (YTZ14S)',
+                    precio: 260000,
+                    imagen: '/Img/bateria7.webp'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
                 <div className="card">
-                  <img src="/Img/llanta-good.jpeg" alt="" />
-                  <h3>Llanta Good</h3>
-                  <span>$390.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/bateria8.webp" alt="" />
+                  <h3>Batería Magna YTX5L-BS</h3>
+                  <span>$85.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 8,
+                    nombre: 'Batería Magna YTX5L-BS',
+                    precio: 85000,
+                    imagen: '/Img/bateria8.webp'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
               </div>

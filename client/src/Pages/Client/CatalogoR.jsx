@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import '../../Css/CatalogoR.css';
 
-function CatalogoR() {
+function CatalogoR( {carrito, agregarCarrito}) {
   return (
     <div className="pagina">
     
@@ -28,62 +28,118 @@ function CatalogoR() {
     
               <div className="productos">
                 <div className="card">
-                  <img src="/Img/Llanta-michelin.webp" alt="" />
-                  <h3>Llanta Michelin</h3>
-                  <span>$350.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/bujia.jpg" alt="" />
+                  <h3>Bujia NGK</h3>
+                  <span>$30.000</span>
+                  <button 
+                  onClick={()=>agregarCarrito({
+                    id: 1,
+                    nombre: 'Bujia NGK',
+                    precio: 30000,
+                    imagen: '/Img/bujia.jpg'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
     
                 <div className="card">
-                  <img src="/Img/llanta-pirelli.jpeg" alt="" />
-                  <h3>Llanta Pirelli</h3>
-                  <span>$420.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/discos.jpg" alt="" />
+                  <h3>Discos de clucht</h3>
+                  <span>$200.000</span>
+                  <button 
+                  onClick={()=>agregarCarrito({
+                    id: 2,
+                    nombre: 'Discos de clucht',
+                    precio: 200000,
+                    imagen: '/Img/discos.jpg'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
                 <div className="card">
-                  <img src="/Img/llanta-metzeler.jpeg" alt="" />
-                  <h3>Llanta Metzeler</h3>
-                  <span>$390.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/filtro.webp" alt="" />
+                  <h3>Filtro uni racing</h3>
+                  <span>$100.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 3,
+                    nombre: 'Filtro uni racing',
+                    precio: 100000,
+                    imagen: '/Img/filtro.webp'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
                 <div className="card">
-                  <img src="/Img/llanta-bridgestone.jpeg" alt="" />
-                  <h3>Llanta bridgestone</h3>
-                  <span>$390.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/Aceite.webp" alt="" />
+                  <h3>Aceite Motul</h3>
+                  <span>$32.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 4,
+                    nombre: 'Aceite Motul',
+                    precio: 32000,
+                    imagen: '/Img/Aceite.webp'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
                 <div className="card">
-                  <img src="/Img/llanta-continental.jpeg" alt="" />
-                  <h3>Llanta Continental</h3>
-                  <span>$390.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/lubricante.jpg" alt="" />
+                  <h3>Lubricante Yamalube</h3>
+                  <span>$39.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 5,
+                    nombre: 'Lubricante Yamalube',
+                    precio: 39000,
+                    imagen: '/Img/lubricante.jpg'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
     
                 <div className="card">
-                  <img src="/Img/llanta-dulop.jpeg" alt="" />
-                  <h3>Llanta Dulop</h3>
-                  <span>$390.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/kit arrastre.webp" alt="" />
+                  <h3>Kit de arrastre</h3>
+                  <span>$120.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 6,
+                    nombre: 'Kit de arrastre',
+                    precio: 120000,
+                    imagen: '/Img/kit arrastre.webp'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
     
                 <div className="card">
-                  <img src="/Img/llanta-heiden.jpeg" alt="" />
-                  <h3>Llanta Heiden</h3>
-                  <span>$390.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/guaya.jpeg" alt="" />
+                  <h3>Guaya acelerador</h3>
+                  <span>$15.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 7,
+                    nombre: 'Guaya acelerador',
+                    precio: 15000,
+                    imagen: '/Img/guaya.jpeg'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
                 <div className="card">
-                  <img src="/Img/llanta-good.jpeg" alt="" />
-                  <h3>Llanta Good</h3>
-                  <span>$390.000</span>
-                  <button>Comprar</button>
+                  <img src="/Img/MANIVELA.jpg" alt="" />
+                  <h3>Manivela con regulador</h3>
+                  <span>$90.000</span>
+                  <button
+                  onClick={()=>agregarCarrito({
+                    id: 8,
+                    nombre: 'Manivela con regulador',
+                    precio: 90000,
+                    imagen: '/Img/MANIVELA.jpg'
+                  })}
+                  >Agregar al Carrito</button>
                 </div>
     
               </div>

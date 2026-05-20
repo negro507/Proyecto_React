@@ -37,6 +37,12 @@ function IndexV({ setSesion, setNombreUsuario }) {
 
   // LOGIN
   const login = () => {
+
+    if (!correo || !password) {
+      alert('Por favor, completa todos los campos');
+      return;
+    }
+
     Axios.post('http://localhost:3001/api/login', {
       correo: correo,
       password: password
