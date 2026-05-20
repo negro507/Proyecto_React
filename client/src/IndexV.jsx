@@ -264,28 +264,37 @@ function IndexV({ setSesion, setNombreUsuario }) {
               <img src="/Img/llantas.jpeg" alt="" />
               <h3>Llanta Michelin</h3>
               <span>$350.000</span>
-              <button>Comprar</button>
+              <button
+              onClick={()=>alert("Debes iniciar sesión para comprar!")}>
+                Comprar
+              </button>
             </div>
 
             <div className="card">
               <img src="/Img/repuestos.jpeg" alt="" />
               <h3>Kit Repuestos</h3>
               <span>$120.000</span>
-              <button>Comprar</button>
+              <button onClick={()=>alert("Debes iniciar sesión para comprar!")}>
+                Comprar
+              </button>
             </div>
 
             <div className="card">
               <img src="/Img/baterias.jpeg" alt="" />
               <h3>Batería Yamaha</h3>
               <span>$250.000</span>
-              <button>Comprar</button>
+              <button onClick={()=>alert("Debes iniciar sesión para comprar!")}>
+                Comprar
+              </button>
             </div>
 
             <div className="card">
               <img src="/Img/limpieza.jpeg" alt="" />
               <h3>Kit Limpieza</h3>
               <span>$80.000</span>
-              <button>Comprar</button>
+              <button onClick={()=>alert("Debes iniciar sesión para comprar!")}>
+                Comprar
+              </button>
             </div>
 
           </div>
