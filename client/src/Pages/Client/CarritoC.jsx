@@ -7,62 +7,103 @@ import '../../Css/CarritoC.css';
 function CarritoC({ carrito, setCarrito }) {
 
 
-  // AUMENTAR CANTIDAD
+
+  // AUMENTAR
   const aumentarCantidad = (id) => {
+
     const nuevoCarrito = carrito.map((producto) => {
+
       if (producto.id === id) {
+
         return {
           ...producto,
           cantidad: producto.cantidad + 1
         };
+
       }
+
       return producto;
+
     });
+
     setCarrito(nuevoCarrito);
+
   };
 
 
 
-  // DISMINUIR CANTIDAD
+
+  // DISMINUIR
   const disminuirCantidad = (id) => {
+
     const nuevoCarrito = carrito.map((producto) => {
+
       if (producto.id === id) {
+
         return {
           ...producto,
           cantidad: producto.cantidad - 1
         };
+
       }
+
       return producto;
+
     })
+
     .filter((producto) => producto.cantidad > 0);
+
     setCarrito(nuevoCarrito);
+
   };
 
 
 
-  // ELIMINAR PRODUCTO
+
+  // ELIMINAR
   const eliminarProducto = (id) => {
-    if (window.confirm('¿Estás seguro de eliminar este producto?')) {
+
+    if (window.confirm('¿Eliminar producto?')) {
+
       const nuevoCarrito = carrito.filter(
         (producto) => producto.id !== id
       );
+
       setCarrito(nuevoCarrito);
+
     }
+
   };
 
 
-  // VACIAR CARRITO
+
+
+  // VACIAR
   const vaciarCarrito = () => {
-    if (window.confirm('¿Estás seguro de vaciar el carrito?')) {
+
+    if (window.confirm('¿Vaciar carrito?')) {
+
       setCarrito([]);
+
+      localStorage.removeItem('carrito');
+
     }
+
   };
+
+
 
 
   // TOTAL
   const total = carrito.reduce((acumulador, producto) => {
-    return acumulador + (producto.precio * producto.cantidad);
+
+    return acumulador + (
+      producto.precio * producto.cantidad
+    );
+
   }, 0);
+
+
 
 
   return (
@@ -71,12 +112,17 @@ function CarritoC({ carrito, setCarrito }) {
 
       {/* HEADER */}
       <header className="header">
+
         <div className="logo">
+
           <Link to="/">
             <h1>MOTOPLANET</h1>
           </Link>
+
         </div>
+
         <span className="barra-verde"></span>
+
       </header>
 
 
@@ -88,38 +134,94 @@ function CarritoC({ carrito, setCarrito }) {
           CARRITO DE COMPRAS
         </h2>
 
+
+
         <div className="contenedor-carrito">
+
           {
+
             carrito.length === 0 ? (
+
               <h2>
                 No hay productos en el carrito
               </h2>
+
             ) : (
+
               carrito.map((producto, index) => (
-                <div className="producto-carrito"key={index}>
-                  <img src={producto.imagen}alt={producto.nombre}/>
+
+                <div
+                  className="producto-carrito"
+                  key={index}
+                >
+
+                  <img
+                    src={producto.imagen}
+                    alt={producto.nombre}
+                  />
+
+
 
                   <div className="info-producto">
+
                     <h3>{producto.nombre}</h3>
+
                     <p>
                       Precio: ${producto.precio}
                     </p>
+
                     <p>
                       Cantidad: {producto.cantidad}
                     </p>
 
+
+
                     {/* BOTONES */}
                     <div className="botones-carrito">
-                      <button onClick={() =>aumentarCantidad(producto.id)}>+</button>
-                      <button onClick={() =>disminuirCantidad(producto.id)}>-</button>
-                      <button onClick={() =>eliminarProducto(producto.id)}>Eliminar</button>
+
+                      <button
+                        onClick={() =>
+                          aumentarCantidad(producto.id)
+                        }
+                      >
+                        +
+                      </button>
+
+
+
+                      <button
+                        onClick={() =>
+                          disminuirCantidad(producto.id)
+                        }
+                      >
+                        -
+                      </button>
+
+
+
+                      <button
+                        onClick={() =>
+                          eliminarProducto(producto.id)
+                        }
+                      >
+                        Eliminar
+                      </button>
+
                     </div>
+
                   </div>
+
                 </div>
+
               ))
+
             )
+
           }
+
         </div>
+
+
 
         {/* TOTAL */}
         <div className="total-carrito">
@@ -130,29 +232,55 @@ function CarritoC({ carrito, setCarrito }) {
 
         </div>
 
+
+
         {/* BOTON VACIAR */}
         {
+
           carrito.length > 0 && (
-            <button className="vaciar-carrito"onClick={vaciarCarrito}>Vaciar carrito</button>
-            
+
+            <button
+              className="vaciar-carrito"
+              onClick={vaciarCarrito}
+            >
+              Vaciar carrito
+            </button>
 
           )
+
         }
 
-        <button className="comprar-carrito">Finalizar compra</button>
 
 
-        
+        {/* FINALIZAR COMPRA */}
+        <Link to="/Factura">
+
+          <button className="comprar-carrito">
+
+            Finalizar compra
+
+          </button>
+
+        </Link>
+
       </main>
+
+
 
       {/* FOOTER */}
       <footer className="footer">
+
         <span className="barra-verdeF"></span>
+
         <p>
           © 2026 MOTOPLANET - Todos los derechos reservados
         </p>
+
       </footer>
+
     </div>
+
   );
 }
+
 export default CarritoC;

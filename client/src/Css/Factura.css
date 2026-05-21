@@ -1,0 +1,117 @@
+/* Factura.css */
+
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+}
+
+
+/* PAGINA */
+.pagina-factura{
+    min-height: 100vh;
+}
+
+
+/* HEADER */
+.header-factura{
+    background: black;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    border-bottom: 8px solid #00ff88;
+}
+
+
+/* CONTENEDOR */
+.contenedor-factura{
+    width: 85%;
+    margin: auto;
+    margin-top: 40px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+
+/* TITULO */
+.contenedor-factura h2{
+    text-align: center;
+}
+
+
+/* TABLA */
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+
+table th{
+    background: black;
+    color: white;
+    padding: 15px;
+}
+
+
+table td{
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+
+/* TOTAL */
+.total-factura{
+    margin-top: 30px;
+    text-align: right;
+    color: #00aa55;
+}
+
+
+/* BOTONES */
+.botones-factura{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+/* BOTON COMPRAR */
+.btn-comprar{
+    background: #00ff88;
+    color: black;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+
+.btn-comprar:hover{
+    transform: scale(1.05);
+}
+
+
+/* BOTON VOLVER */
+.btn-volver{
+    background: black;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+
+.btn-volver:hover{
+    transform: scale(1.05);
+}
