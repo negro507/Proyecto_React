@@ -1,29 +1,19 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom';
-
 import '../../Css/Factura.css';
-
 import jsPDF from 'jspdf';
-
 import autoTable from 'jspdf-autotable';
-
-
 
 function Factura({
 
   carrito,
-
   setCarrito,
-
   nombreUsuario
 
 }) {
 
-
-
-  // TOTAL
-  const total = carrito.reduce((acumulador, producto) => {
+  // SUBTOTAL
+  const subtotal = carrito.reduce((acumulador, producto) => {
 
     return acumulador + (
       producto.precio * producto.cantidad
@@ -31,43 +21,29 @@ function Factura({
 
   }, 0);
 
+  // IVA
+  const iva = subtotal * 0.19;
 
-
+  // TOTAL
+  const totalConIva = subtotal + iva;
 
   // FECHA
   const fecha = new Date().toLocaleDateString();
 
-
-
-
   // DESCARGAR PDF
   const descargarPDF = () => {
 
-
-
-    // CREAR PDF
     const doc = new jsPDF();
-
-
-
 
     // TITULO
     doc.setFontSize(22);
-
     doc.text('MOTOPLANET', 70, 20);
-
-
-
 
     // DATOS
     doc.setFontSize(14);
 
     doc.text(`Cliente: ${nombreUsuario}`, 20, 40);
-
     doc.text(`Fecha: ${fecha}`, 20, 50);
-
-
-
 
     // TABLA
     autoTable(doc, {
@@ -81,64 +57,58 @@ function Factura({
         'Subtotal'
       ]],
 
-
-
       body: carrito.map((producto) => [
 
         producto.nombre,
 
-        `$${producto.precio}`,
+        `$${producto.precio.toLocaleString()}`,
 
         producto.cantidad,
 
-        `$${producto.precio * producto.cantidad}`
+        `$${(
+          producto.precio * producto.cantidad
+        ).toLocaleString()}`
 
       ])
 
     });
 
+    // POSICION FINAL
+    const finalY = doc.lastAutoTable.finalY + 20;
 
-
-
-    // TOTAL
+    // TOTALES
     doc.text(
-
-      `Total a pagar: $${total}`,
-
+      `Subtotal: $${subtotal.toLocaleString()}`,
       20,
-
-      doc.lastAutoTable.finalY + 20
-
+      finalY
     );
 
+    doc.text(
+      `IVA (19%): $${iva.toLocaleString()}`,
+      20,
+      finalY + 10
+    );
 
-
+    doc.text(
+      `Total a pagar: $${totalConIva.toLocaleString()}`,
+      20,
+      finalY + 20
+    );
 
     // GUARDAR PDF
     doc.save('Factura_Motoplanet.pdf');
-
-
-
 
     // VACIAR CARRITO
     setCarrito([]);
 
     localStorage.removeItem('carrito');
 
-
-
     alert('Factura descargada correctamente');
-
   };
-
-
-
 
   return (
 
     <div className="pagina-factura">
-
-
 
       {/* HEADER */}
       <header className="header-factura">
@@ -147,9 +117,6 @@ function Factura({
 
       </header>
 
-
-
-
       {/* CONTENIDO */}
       <main className="contenedor-factura">
 
@@ -157,15 +124,13 @@ function Factura({
           FACTURA DE COMPRA
         </h2>
 
-
+        <p>
+          Cliente: {nombreUsuario}
+        </p>
 
         <p>
           Fecha: {fecha}
         </p>
-
-
-
-
 
         {/* TABLA */}
         <table>
@@ -175,20 +140,13 @@ function Factura({
             <tr>
 
               <th>Producto</th>
-
               <th>Precio</th>
-
               <th>Cantidad</th>
-
               <th>Subtotal</th>
 
             </tr>
 
           </thead>
-
-
-
-
 
           <tbody>
 
@@ -203,7 +161,8 @@ function Factura({
                   </td>
 
                   <td>
-                    ${producto.precio}
+                    $
+                    {producto.precio.toLocaleString()}
                   </td>
 
                   <td>
@@ -212,7 +171,9 @@ function Factura({
 
                   <td>
                     $
-                    {producto.precio * producto.cantidad}
+                    {(
+                      producto.precio * producto.cantidad
+                    ).toLocaleString()}
                   </td>
 
                 </tr>
@@ -225,35 +186,41 @@ function Factura({
 
         </table>
 
-
-
-
-
-        {/* TOTAL */}
+        {/* TOTALES */}
         <div className="total-factura">
 
+          <h3>
+            Subtotal:
+            ${subtotal.toLocaleString()}
+          </h3>
+
+          <h3>
+            IVA (19%):
+            ${iva.toLocaleString()}
+          </h3>
+
           <h2>
-            Total a pagar: ${total}
+            Total a pagar:
+            ${totalConIva.toLocaleString()}
           </h2>
 
         </div>
 
-
-
-
-
         {/* BOTONES */}
         <div className="botones-factura">
 
-          <button
-            className="btn-comprar"
-            onClick={descargarPDF}
-          >
+          <button className="btn-comprar"onClick={descargarPDF}>
             Confirmar compra
           </button>
 
-
-
+          <button className="btn-cancelar"
+            onClick={() => {
+              setCarrito([]);
+              localStorage.removeItem('carrito');
+              alert("Compra cancelada");
+            }}>
+            Cancelar compra
+          </button>
 
           <Link to="/">
 
