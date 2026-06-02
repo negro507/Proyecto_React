@@ -3,7 +3,7 @@ import '../Css/App.css';
 
 import IndexV from '../IndexV';
 import IndexU from '../Pages/Client/IndexU';
-import IndexAD from '../Pages/Admin/IndexAD';
+import IndexAD from '../Pages/Admin/indexAD';
 
 import CatalogoLLantas from '../Pages/Client/CatalogoLLantas';
 import CatalogoR from '../Pages/Client/CatalogoR';
